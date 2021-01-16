@@ -1,5 +1,5 @@
-from player import Player, PlayerType
-from estate import Estate
+from models.player import Player, PlayerType
+from models.estate import Estate
 import random
 from operator import attrgetter
 
