@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from enum import Enum
-from estate import Estate
+from models.estate import Estate
 import random
 
 class PlayerType(str, Enum):
