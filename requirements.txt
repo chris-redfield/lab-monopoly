@@ -1,0 +1,8 @@
+numpy==1.19.3
+requests
+jsons
+pydantic
+Jinja2
+fastapi==0.61.1
+uvicorn
+aiofiles
