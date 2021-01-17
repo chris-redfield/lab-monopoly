@@ -11,3 +11,7 @@ class ProcessRoundRequest(BaseModel):
 
 class RunGameRequest(BaseModel):
 	random_seed: int = 0
+
+class RunGamesRequest(BaseModel):
+	random_seed: int = 0
+	games_number: int = 10

@@ -1,7 +1,9 @@
 from models.player import Player, PlayerType
 from models.estate import Estate
 import random
+import operator
 from operator import attrgetter
+import pandas as pd
 
 
 class Game:
@@ -163,4 +165,33 @@ class Game:
         self.players_order = [winner]
         print("the winner is", winner)
         
-        return winner, self.round_ + 1
+        return winner, self.round_
+
+    ## Executa um número n de jogos
+    ## Retorna:
+    ## Quantas partidas terminam por time out (1000 rodadas);
+    ## Quantos turnos em média demora uma partida;
+    ## Qual a porcentagem de vitórias por comportamento dos jogadores;
+    ## Qual o comportamento que mais vence.
+    def run_games(self, seed, games_number):
+        winner_list = []
+        round_list = []
+        for i in range(games_number):
+            print(f"\n game number {i + 1}")
+            winner, round_ = self.run_game(seed)
+            winner_list.append(winner.player_type.value)
+            round_list.append(round_)
+        
+        rounds = pd.Series(round_list)
+        count_rounds = rounds.value_counts()
+
+        if(len(count_rounds[count_rounds.index.isin([1000])]) > 0):
+            n_timeout = rounds.value_counts()[1000]
+        else:
+            n_timeout = 0
+
+        mean_rounds = int(rounds.mean())
+        victory_percentage = pd.Series(winner_list).value_counts().to_dict()
+        top_type = max(victory_percentage.items(), key=operator.itemgetter(1))[0]
+
+        return n_timeout, mean_rounds, victory_percentage, top_type
