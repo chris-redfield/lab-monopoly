@@ -4,9 +4,9 @@ from fastapi import Query
 
 import logging
 
-from models.response_models import GameStateResponse, RunGameResponse
+from models.response_models import GameStateResponse, RunGameResponse, RunGamesResponse
 
-from models.requests_models import InitGameRequest, ProcessRoundRequest, RunGameRequest
+from models.requests_models import InitGameRequest, ProcessRoundRequest, RunGameRequest, RunGamesRequest
 
 import main
 
@@ -64,3 +64,15 @@ async def run_game(run_game_request: RunGameRequest):
 	winner, round_ = main.game_instance.run_game(random_seed)
 
 	return RunGameResponse(winner=winner, round_=round_)
+
+@router.post('/run_games', response_model=RunGamesResponse)
+async def run_games(run_games_request: RunGamesRequest):
+	"""Executa n jogos, retorna o número time outs, a média de turnos por partida, 
+	a percentagem de vitória por tipo de jogador e o tipo de jogador que mais ganha."""
+	
+	random_seed = run_games_request.random_seed
+	games_number = run_games_request.games_number
+
+	n_timeout, mean_rounds, victory_percentage, top_type =  main.game_instance.run_games(random_seed, games_number)
+
+	return RunGamesResponse(n_timeout=n_timeout, mean_rounds=mean_rounds, victory_percentage=victory_percentage, top_type=top_type)

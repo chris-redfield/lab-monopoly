@@ -6,3 +6,4 @@ Jinja2
 fastapi==0.61.1
 uvicorn
 aiofiles
+pandas
