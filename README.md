@@ -49,7 +49,7 @@ Através do caminho /docs, é possível acessar a documentação interativa das 
 Mudanças entram em efeito após o reinicio do serviço (docker-compose up), não há necessidade de reconstrução do container, com exceção de casos onde novas funcionalidades / bibliotecas forem adicionadas.
 
 ## testes
-Para executar os testes, navegue até a raiz do projeto e execute o comando abaixo para realizar os testes com os prints do serviço (para ver os jogos no log). 
+Navegue até a raiz do projeto e execute o comando abaixo para realizar os testes com os prints do serviço (para ver os jogos no log). 
 
 ```console
 pytest -s
