@@ -15,5 +15,5 @@ class RunGameResponse(BaseModel):
 class RunGamesResponse(BaseModel):
     n_timeout: int
     mean_rounds: int
-    victory_percentage: Dict[str, int]
+    victory_percentage: Dict[str, float]
     top_type: PlayerType

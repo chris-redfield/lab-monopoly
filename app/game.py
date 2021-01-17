@@ -191,7 +191,9 @@ class Game:
             n_timeout = 0
 
         mean_rounds = int(rounds.mean())
-        victory_percentage = pd.Series(winner_list).value_counts().to_dict()
+        win_times = pd.Series(winner_list).value_counts()
+        victory_percentage = win_times / win_times.sum() * 100
+        victory_percentage = victory_percentage.round(1).to_dict()
         top_type = max(victory_percentage.items(), key=operator.itemgetter(1))[0]
 
         return n_timeout, mean_rounds, victory_percentage, top_type
