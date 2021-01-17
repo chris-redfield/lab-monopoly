@@ -1,7 +1,7 @@
 # lab-monopoly
 
 ### instalação
-Não é necessária a instalação de pacotes loucamente, basta subir o ambiente de desenvolvimento que ele realizará a instalação em um container docker.
+Não é necessária a instalação de pacotes localmente, basta subir o ambiente de desenvolvimento que ele realizará a instalação em um container docker.
 
 ### como subir o serviço
 ```console
