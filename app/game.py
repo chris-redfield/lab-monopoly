@@ -7,14 +7,16 @@ import pandas as pd
 
 
 class Game:
+    """Executa e controla os valores dos jogos."""
 
     players_list = None
     players_order = None
     board = None
     round_ = None
 
-    # Inicializa um novo jogo
     def init_game(self, seed):
+        """Inicializa um novo jogo e retorna seu estado."""
+
         player_1 = Player(
             player_id=1, player_type=PlayerType.IMPULSIVE, balance=300)
         player_2 = Player(
@@ -65,9 +67,10 @@ class Game:
 
         return players_list, players_order, board
 
-    # Executa uma rodada, elimina jogadores com menos de 0 de saldo
-    # retorna o estado atual do jogo
     def process_single_round(self, seed):
+        """ Executa uma rodada, elimina jogadores com menos de 
+        0 de saldo e retorna o estado atual do jogo
+        """
 
         # Caso não haja game inicializado, inicia um novo
         if(self.players_list == None):
@@ -107,10 +110,10 @@ class Game:
 
         return players_list, players_order, board
 
-    # Executa uma rodada, elimina jogadores com menos de 0 de saldo
-    # Retorna caso haja um vencedor
-    # Metodo criado para ser usado em conjunto com o run_game
     def process_round(self, players_list, players_order, board):
+        """ Executa uma rodada, elimina jogadores com menos de 0 de saldo
+        Retorna caso haja um vencedor. Metodo criado para ser usado em conjunto com o run_game
+        """
         self.round_ += 1
 
         for player in players_order:
@@ -144,8 +147,9 @@ class Game:
                     else:
                         return True
 
-    # Executa uma iteração completa de um game, ou finaliza o game atual
     def run_game(self, seed):
+        """ Executa uma iteração completa de um novo game, ou executa o game atual até o fim
+        Retorna o vencedor e o número da última rodada"""
 
         # Caso não haja game inicializado, ou haja um game finalizado, inicia um novo
         if self.players_list == None or len(self.players_order) == 1:
@@ -171,13 +175,15 @@ class Game:
 
         return winner, self.round_
 
-    # Executa um número n de jogos
-    # Retorna:
-    # Quantas partidas terminam por time out (1000 rodadas);
-    # Quantos turnos em média demora uma partida;
-    # Qual a porcentagem de vitórias por comportamento dos jogadores;
-    # Qual o comportamento que mais vence.
     def run_games(self, seed, games_number):
+        """ Executa um número n de jogos
+        Retorna:
+        - quantas partidas terminam por time out (1000 rodadas);
+        - quantos turnos em média demora uma partida;
+        - qual a porcentagem de vitórias por comportamento dos jogadores;
+        - qual o comportamento que mais vence.
+        """
+
         winner_list = []
         round_list = []
         for i in range(games_number):
