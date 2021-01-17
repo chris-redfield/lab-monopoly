@@ -1,4 +1,3 @@
-numpy==1.19.3
 requests
 jsons
 pydantic
@@ -7,3 +6,4 @@ fastapi==0.61.1
 uvicorn
 aiofiles
 pandas
+pytest
