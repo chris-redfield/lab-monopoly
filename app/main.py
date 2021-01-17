@@ -3,7 +3,7 @@ from fastapi.staticfiles import StaticFiles
 
 from routers import monopoly
 
-from models.game import Game
+from game import Game
 
 app = FastAPI()
 
