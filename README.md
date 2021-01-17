@@ -1,16 +1,19 @@
 # lab-monopoly
 
-### instalação
-Não é necessária a instalação de pacotes localmente, basta subir o ambiente de desenvolvimento que ele realizará a instalação em um container docker.
+## pré requisitos
+Para subir o serviço é necessária a instalação do Docker e do Docker Compose na sua máquina, instaladores: https://docs.docker.com/engine/install/ e https://docs.docker.com/compose/install/.
 
-### como subir o serviço
+## instalação
+Não é necessária a instalação de pacotes python localmente, basta subir o ambiente de desenvolvimento que ele realizará a instalação em um container docker.
+
+## como subir o serviço
 Na pasta raiz do projeto, execute o comando abaixo:
 
 ```console
 docker-compose up
 ```
 
-### como acessar o serviço
+## como acessar o serviço
 O Serviço está disponível em uma API na porta 80. Caso deseje trocar a porta em seu computador, altere a primeira porta da opção "PORTS" do arquivo docker-compose.yml
 
 Todas as rotas respondem HTTP POST em formato JSON.
