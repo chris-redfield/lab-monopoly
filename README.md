@@ -3,6 +3,8 @@
 ## pré requisitos
 Para subir o serviço é necessária a instalação do Docker e do Docker Compose na sua máquina, instaladores: https://docs.docker.com/engine/install/ e https://docs.docker.com/compose/install/.
 
+Para executar os arquivos da pasta notebooks é necessária a instalação do jupyter em seu ambiente: https://jupyter.org/install.
+
 ## instalação
 Não é necessária a instalação de pacotes python localmente, basta subir o ambiente de desenvolvimento que ele realizará a instalação em um container docker.
 
@@ -37,6 +39,9 @@ Através do caminho /docs, é possível acessar a documentação interativa das 
 ​4. /monopoly​/run_games
 
 * Executa n jogos, retorna estatísticas dos jogos
+
+![demo da rota run_games](https://raw.githubusercontent.com/chris-redfield/lab-monopoly/main/images/stats.png)
+
 
 ## desenvolvimento
 Mudanças entram em efeito após o reinicio do serviço (docker-compose up), não há necessidade de reconstrução do container, com exceção de casos onde novas funcionalidades / bibliotecas forem adicionadas.
