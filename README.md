@@ -1,9 +1,11 @@
 # lab-monopoly
 
 ## pré requisitos
-Para subir o serviço é necessária a instalação do Docker e do Docker Compose na sua máquina, instaladores: https://docs.docker.com/engine/install/ e https://docs.docker.com/compose/install/.
+* Para subir o serviço é necessária a instalação do Docker e do Docker Compose na sua máquina, instaladores: https://docs.docker.com/engine/install/ e https://docs.docker.com/compose/install/.
 
-Para executar os arquivos da pasta notebooks é necessária a instalação do jupyter em seu ambiente: https://jupyter.org/install.
+* Para executar os arquivos da pasta notebooks é necessária a instalação do jupyter em seu ambiente: https://jupyter.org/install.
+
+* Para executar os testes é necessário instalar a biblioteca pytest
 
 ## instalação
 Não é necessária a instalação de pacotes python localmente, basta subir o ambiente de desenvolvimento que ele realizará a instalação em um container docker.
@@ -45,3 +47,12 @@ Através do caminho /docs, é possível acessar a documentação interativa das 
 
 ## desenvolvimento
 Mudanças entram em efeito após o reinicio do serviço (docker-compose up), não há necessidade de reconstrução do container, com exceção de casos onde novas funcionalidades / bibliotecas forem adicionadas.
+
+## testes
+Para executar os testes, navegue até a raiz do projeto e execute o comando abaixo para realizar os testes com os prints do serviço (para ver os jogos no log). 
+
+```console
+pytest -s
+```
+
+Caso não queira ver os prints basta remover o '-s'.
