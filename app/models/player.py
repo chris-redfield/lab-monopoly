@@ -4,20 +4,27 @@ from models.estate import Estate
 import random
 
 class PlayerType(str, Enum):
+    """Tipo de Jogador"""
+
     IMPULSIVE = 'impulsive'
     RIGOROUS = 'rigorous'
     CAUTIOUS = 'cautious'
     RANDOM = 'random'
 
 class Player(BaseModel):
+    """Principal entidade do jogo. Move-se pelo tabuleiro, compra imóveis e coleta / paga aluguel"""
+
     player_id: int
     player_type : PlayerType = None
     balance:int
     estates:list = []
     position:int = -1
 
-    # joga o dado e retorna a nova posição do jogador
     def move(self):
+        """Joga o dado e retorna a nova posição do jogador
+        Caso supere a posição 19, continua do início.
+        """
+
         dice_row = random.randint(1,6)
 
         print(f"player {self.player_id} rolled {dice_row}")
@@ -37,9 +44,11 @@ class Player(BaseModel):
         return self.position
 
 
-    # pergunta ao jogador se ele quer comprar a propriedade
-    # retorna se o jogador realizou a compra
     def buy(self, estate:Estate):
+        """ Pergunta ao jogador se ele quer comprar a propriedade.
+        Retorna se o jogador realizou a compra.
+        """
+
         #nao pode comprar
         if(self.balance - estate.price < 0):
             return False
@@ -84,10 +93,10 @@ class Player(BaseModel):
                     return False
 
 
-    # realiza pagamento do aluguel
-    # retorna se o jogador está falido
-    # caso o jogador caia na própria propriedade, nada mudará
     def pay_rent(self, estate:Estate, estate_owner: 'Player'):
+        """Realiza pagamento do aluguel e retorna se o jogador está falido.
+        caso o jogador caia na própria propriedade, nada mudará.
+        """
         self.balance -= estate.rent
         estate_owner.balance += estate.rent
         # Jogador tem saldo
