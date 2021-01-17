@@ -15,6 +15,8 @@ O Serviço está disponível em uma API na porta 80. Caso deseje trocar a porta 
 
 Todas as rotas respondem HTTP POST em formato JSON.
 
+Através do caminho /docs, é possível acessar a documentação interativa das rotas, gerada automaticamente:
+
 ![documentação swagger da aplicação](https://raw.githubusercontent.com/chris-redfield/lab-monopoly/main/images/docs.png)
 
 ​1. /monopoly​/new_game
